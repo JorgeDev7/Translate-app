@@ -1,0 +1,15 @@
+/* Hero */
+.hero {
+    background-image: linear-gradient(to top, var(--black) 10%, transparent),url("/img/hero_img.jpg");
+    height: 70rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10rem;
+}
