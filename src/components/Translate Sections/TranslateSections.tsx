@@ -1,12 +1,11 @@
 import { FormEvent, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import DetectLanguage from 'detectlanguage';
 import { parse } from 'valibot';
 
 import Spinner from '../spinner/Spinner';
 
-import { detectedLang, translateReponse } from '../../schemas/TranslateSchema';
-import { DetectLang, Language } from '../../types/translateTypes';
+import { translateReponse } from '../../schemas/TranslateSchema';
+import { Language } from '../../types/translateTypes';
 
 // icons
 import alfa from '/icons/Sort_alfa.svg';
@@ -25,19 +24,10 @@ export default function TranslateSections() {
     const [loading, setLoading] = useState(false);
     const [isDetectingLanguage, setIsDetectingLanguage] = useState(false);
 
-    const detection = new DetectLanguage(import.meta.env.VITE_DTL_API_KEY);
-
     useEffect(() => {
         const detectALanguage = () => {
             if (inputLang.input && isDetectingLanguage) {
-                detection.detect(inputLang.input).then((res: DetectLang) => {
-                    const result = parse(detectedLang, res);
-                    if (result) {
-                        setFirstLang(result[0].language);
-                    } else {
-                        toast.error('Cannot find the Language');
-                    }
-                });
+                // detect and return a lang code
             }
         };
 
