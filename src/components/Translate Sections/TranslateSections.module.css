@@ -85,6 +85,7 @@
     resize: none;
     margin-top: 3rem;
     border: none;
+    font-size: 1.8rem;
     background-color: transparent;
     color: var(--white);
 }
