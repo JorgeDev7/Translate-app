@@ -1,6 +1,6 @@
 # Translate App
 
-![preview of the app](./Preview-App.webp);
+![preview of the app](./Preview-App.webp)
 
 This app is made it to replicate the functinality of the Google Translate, but with a beatiful design. You can choose whay language do you want to write and translate, also you can copy to clipboard both text.
 
@@ -19,4 +19,4 @@ This site gave us a lot of projects to practice and improve our Dev skills. I ch
 
 
 ## Live Project:
-🔗 //Todo: add url
+🔗 [App url](https://translate-app-ts.vercel.app)
