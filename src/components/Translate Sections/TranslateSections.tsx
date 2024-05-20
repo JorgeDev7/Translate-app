@@ -1,4 +1,4 @@
-import { FormEvent, useState, useEffect } from 'react';
+import { FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 import { parse } from 'valibot';
 
@@ -9,7 +9,6 @@ import { Language } from '../../types/translateTypes';
 
 // icons
 import alfa from '/icons/Sort_alfa.svg';
-import sound from '/icons/sound_max_fill.svg';
 import copy from '/icons/Copy.svg';
 import arrows from '/icons/Horizontal_top_left_main.svg';
 
@@ -23,16 +22,6 @@ export default function TranslateSections() {
 
     const [loading, setLoading] = useState(false);
     const [isDetectingLanguage, setIsDetectingLanguage] = useState(false);
-
-    useEffect(() => {
-        const detectALanguage = () => {
-            if (inputLang.input && isDetectingLanguage) {
-                // detect and return a lang code
-            }
-        };
-
-        detectALanguage();
-    }, [inputLang.input, isDetectingLanguage]);
 
     const handleTranslateSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -73,7 +62,7 @@ export default function TranslateSections() {
                     output: result.translatedText
                 });
             } else {
-                toast.error('Translate Failed');
+                throw new Error('Translate Failed');
             }
         } catch (error) {
             console.log(error);
@@ -102,15 +91,6 @@ export default function TranslateSections() {
             <div className={styles.input}>
                 <header className={styles.header}>
                     <ul className={styles.list}>
-                        <li>
-                            <button
-                                type="button"
-                                onClick={() => setIsDetectingLanguage(true)}
-                                className={`${isDetectingLanguage ? styles.active : ''}`}
-                            >
-                                Detect Language
-                            </button>
-                        </li>
                         {handle.firstSection.map((lang: Language) => (
                             <li key={lang.id}>
                                 <button
@@ -146,14 +126,6 @@ export default function TranslateSections() {
                     onSubmit={handleTranslateSubmit}
                 >
                     <div className={styles.actions}>
-                        <button
-                            type="button"
-                        >
-                            <img
-                                src={sound}
-                                alt="sound icon"
-                            />
-                        </button>
                         <button
                             type="button"
                             id='input'
@@ -226,14 +198,6 @@ export default function TranslateSections() {
                 </main>
                 <footer className={styles.footer}>
                     <div className={styles.actions}>
-                        <button
-                            type="button"
-                        >
-                            <img
-                                src={sound}
-                                alt="sound icon"
-                            />
-                        </button>
                         <button
                             type="button"
                             id='output'
